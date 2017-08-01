@@ -62,18 +62,6 @@ exports.POST = function(req,res){
 			"message": "You JSON is invalid"
 		})
 	}
-
-/*
-{
-  "success": true,
-  "friends" :
-    [
-      'john@example.com'
-    ],
-  "count" : 1   
-}
-*/
-
 }
 
 /*
@@ -87,8 +75,24 @@ Use any HTTP Client like POSTMAN and pass the following as POST request in body/
 */
 exports.POST_common = function() {
 
+
+
+/*
+{
+  "success": true,
+  "friends" :
+    [
+      'common@example.com'
+    ],
+  "count" : 1   
+}
+*/
+
 }
 
-exports.GET_ALL = function() {
 
-}
+
+
+
+
+

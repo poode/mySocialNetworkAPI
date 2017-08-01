@@ -14,16 +14,13 @@
  });
 
 //Create connection between two email addresses. (Task01)
-router.post('/connection',require('./controllers/connection').POST);
+router.post('/connection',require('./controllers/connection').POST);//DONE
 
 //List all connection between two email addresses. (Bonus)
-router.get('/connection',require('./controllers/connection').GET_ALL);
+router.get('/connection',require('./controllers/connection').GET_ALL);//DONE
 
 //Retrieve the friends list for an email address. (Task02)
-router.post('/friends',require('./controllers/friends').POST);
-
-//Retrieve the friends list for an email address. (Bonus)
-router.get('/friends',require('./controllers/friends').GET_ALL);
+router.post('/friends',require('./controllers/friends').POST);//DONE
 
 //Retrieve the common friends list between two email addresses. (Task03)
 router.post('/friends/common',require('./controllers/friends').POST_common);

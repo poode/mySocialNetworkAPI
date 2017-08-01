@@ -27,7 +27,6 @@ I have used Node.js (v6.x.x), MongoDB (v3.4.X) and Express.js (4.X) as technolog
 - POST /connection: Create connection between two email addresses. (Task01)
 - GET /connection: List all connection between two email addresses. (Bonus)
 - POST /friends: Retrieve the friends list for an email address. (Task02)
-- GET /friends: Retrieve the friends list for an email address. (Bonus)
 - POST /friends/common: Retrieve the common friends list between two email addresses. (Task03)
 - POST /updates/subscribe: Subscribe to updates from an email address. (Task04)
 - POST /updates/block: Block updates from an email address. (Task05)

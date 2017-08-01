@@ -36,10 +36,6 @@
 |-- /views
 |    |
 |    |--error.ejs
-|    |
-|    |--connection.ejs
-|    |
-|    |--friends.ejs
 |
 |-- /tools
 |   |
