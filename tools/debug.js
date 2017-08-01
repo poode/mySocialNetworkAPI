@@ -54,7 +54,7 @@ exports.debugbyMorgan = morgan(debugTOLogConsole());
 
 /*-------------- FindfilePath --------------*/
 exports.FindfilePath = function(filename) {
-	filename = filename.split("/" + config.GithubFolderName + "/")[1];
+	filename = filename.split("/mySocialNetworkAPI/")[1];
 	return process.pid + " " + filename + " "
 }
 

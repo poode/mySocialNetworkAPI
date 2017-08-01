@@ -9,6 +9,10 @@
  var express = require('express');
  var router = express.Router();
 
+ router.get('/', function(){
+ 	res.redirect('/connection');
+ });
+
 //Create connection between two email addresses. (Task01)
 router.post('/connection',require('./controllers/connection').POST);
 

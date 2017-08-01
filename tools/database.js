@@ -7,6 +7,16 @@
 
  var mongoose = require('mongoose');
  var envs = require('envs');
+ var timestamp = require('console-timestamp');
+ var colors = require('colors/safe');
+ var timeFormat = 'DD-MM-YYYY hh:mm:ss:iii';
+
+ /*-------------- Customised Developer messages handled by the debug mode --------------*/
+ var debugsuccess = require('./debug').debugsuccess;
+ var debugwarn = require('./debug').debugwarn;
+ var debugerror = require('./debug').debugerror;
+ var debugdb = require('./debug').debugdb;
+ var debugpath = require('./debug').FindfilePath(__filename);
 
  if (envs('DB_ENV') === 'LOCAL') {
  	var MongoHost = 'localhost';
@@ -19,15 +29,14 @@
  	useMongoClient: true
  };
 
-/*-------------- database connected via mongoose --------------*/
+ /*-------------- database connected via mongoose --------------*/
  exports.DatabaseURIPromise = mongoose.Promise = global.Promise;
  exports.DatabaseURI = mongoose.connect(connectionString4Database, DatabaseURIOptions, function(err) {
  	if (err) {
- 		console.log('DatabaseURI.err', err)
+ 		debugerror(timestamp(timeFormat) + ' ' + colors.green(debugpath) + colors.green('XSHDatabase.connect.err -> ') + colors.green(err));
  	} else {
- 		console.log('DatabaseURI', 'OK')
+ 		debugsuccess(timestamp(timeFormat) + ' ' + colors.red(debugpath) + colors.red('XSHDatabase.connect -> ') + colors.red('Ok'));
  	}
-
  });
 
  exports.connectionString4Database = connectionString4Database;

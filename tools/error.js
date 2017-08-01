@@ -8,6 +8,9 @@
  var errorHandler = require('express-error-handler');
  var timeout = require('connect-timeout');
  var mongoose = require('mongoose');
+ var timestamp = require('console-timestamp');
+ var colors = require('colors/safe');
+ var timeFormat = 'DD-MM-YYYY hh:mm:ss:iii';
 
  var debugvariable = require('./debug');
  var debugsuccess = debugvariable.debugsuccess;
@@ -20,7 +23,7 @@
  exports.http404 = function(req, res, next) {
  	var err = new Error('Not found');
  	err.status = 404;
- 	res.redirect('/login');
+ 	res.redirect('/');
  };
 
  /*-------------- Handling all errors--------------*/
@@ -43,23 +46,13 @@
 /*-------------- Handling all ClientErrors--------------*/
 exports.isClientErrors = function(err, req, res, next) {
 	if (errorHandler.isClientError(404) === true || errorHandler.isClientError(500) === true) {
-		if (req.user) {
-			res.render('error', {
-				message: err.message,
-				error: err,
-				hiddenErr: err,
-				user: req.user,
-				path: req.path
-			});
-		} else {
-			res.render('error', {
-				message: err.message,
-				error: err,
-				hiddenErr: err,
-				user: "",
-				path: req.path
-			});
-		}
+		res.render('error', {
+			message: err.message,
+			error: err,
+			hiddenErr: err,
+			user: "",
+			path: req.path
+		});
 	} else {
 		next();
 	}
@@ -77,7 +70,7 @@ exports.haltOnTimedout = function(req, res, next) {
 exports.HandleMongooseError = function(req, res, next) {
 	if (mongoose.connection.readyState !== 1) {
 		return next(new HttpError(500, "DataBase disconnected"));
-		console.log("DataBase disconnected");
+		debugsuccess(timestamp(timeFormat) + ' ' + colors.red(debugpath) + colors.red('Database disconnected'));
 	}
 	next();
 }

@@ -27,7 +27,10 @@ exports.POST = function(req, res) {
 
 	model.save(function(err) {
 		if (err) {
-			return res.send(err);
+			res.json({
+				"err":true,
+				"message":err
+			})
 		}
 		res.json({
 			"success": true

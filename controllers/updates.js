@@ -19,7 +19,7 @@
  	
  }
 
- exports.POST_block = function(req,res){
+ exports.POST_emails = function(req,res){
 
  	
  }

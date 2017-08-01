@@ -15,6 +15,8 @@
  var errorHandler = require('express-error-handler');
  var timestamp = require('console-timestamp');
  var colors = require('colors/safe');
+ var fs = require('fs');
+ var mongoose = require('mongoose');
 
  var routes = require('./routes');
  var database = require('./tools/database');
@@ -92,10 +94,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 
 /*-------------- Error Handling --------------*/
-app.use(Errors.http404);
-app.use(Errors.httpServerErrors);
-app.use(Errors.isClientErrors);
-app.use(Errors.HandleMongooseError);
+app.use(errors.http404);
+app.use(errors.httpServerErrors);
+app.use(errors.isClientErrors);
+app.use(errors.HandleMongooseError);
 
 /*-------------- Handling process killing --------------*/
 process.on('SIGINT', function() {
