@@ -9,6 +9,9 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var connectionModelConfiguration = new Schema({
+	friends: [{
+		type: String
+	}],
 	timeaccessed: {
 		type: Date,
 		default: Date.now

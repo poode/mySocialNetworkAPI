@@ -9,9 +9,6 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var friendsModelConfiguration = new Schema({
-	friends: [{
-		type: String
-	}],
 	timeaccessed: {
 		type: Date,
 		default: Date.now
