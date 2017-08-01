@@ -15,4 +15,4 @@ var skipfunction = function(req, res) {
 }
 
 /*-------------- Logger with SkipFunction ---------------------------*/
-exports.loggerSystem = HTTPLogger(db,collectionName,skipfunction); //It only stores errors, offcourse this can be for all the use cases.
+exports.loggerSystem = HTTPLogger(db,collectionName);

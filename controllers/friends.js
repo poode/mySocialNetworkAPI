@@ -21,28 +21,43 @@ Use any HTTP Client like POSTMAN and pass the following as POST request in body/
 */
 
 exports.POST = function(req, res) {
-	var model = new friendsModel({
-		friends: req.body.friends
-	});
+/*
+Error cases:
+- req.body.friends should exists
+- req.body.friends[0] should not be empty & should be a string
+- req.body.friends[1] should not be empty & should be a string
+*/
 
-	model.save(function(err) {
-		if (err) {
+	if (req.body.friends && req.body.friends[0] !== undefined && req.body.friends[1] !== undefined && typeof(req.body.friends[0]) === 'string' && typeof(req.body.friends[1]) === 'string') {
+		var model = new friendsModel({
+			friends: req.body.friends
+		});
+
+		model.save(function(err) {
+			if (err) {
+				res.json({
+					"err": true,
+					"message": err
+				})
+			}
 			res.json({
-				"err":true,
-				"message":err
+				"success": true
 			})
-		}
+		});
+	}
+	else {
 		res.json({
-			"success": true
+			"err": true,
+			"message": "You JSON is invalid"
 		})
-	});
+	}
 }
 
 
-exports.GET_ALL = function(){
+exports.GET_ALL = function() {
 
 }
 
-exports.POST_common = function(){
+exports.POST_common = function() {
 
 }
