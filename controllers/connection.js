@@ -28,10 +28,8 @@ exports.POST = function(req, res) {
 	- req.body.friends[0] should not be empty & should be a string
 	- req.body.friends[1] should not be empty & should be a string
 	*/
-
-	console.log()
-
-	if (req.body.friends && req.body.friends[0] !== undefined && req.body.friends[1] !== undefined && typeof(req.body.friends[0]) === 'string' && typeof(req.body.friends[1]) === 'string' && req.body.friends.length < 2) {
+	
+	if (req.body.friends && req.body.friends[0] !== undefined && req.body.friends[1] !== undefined && typeof(req.body.friends[0]) === 'string' && typeof(req.body.friends[1]) === 'string' && req.body.friends.length === 2) {
 		var model = new connectionModel({
 			friends: req.body.friends
 		});
