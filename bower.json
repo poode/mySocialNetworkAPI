@@ -1,0 +1,34 @@
+{
+  "name": "mysocialnetworkapi",
+  "description": "Node.js API to evaluate my coding skills, Friend Management System",
+  "main": "app.js",
+  "authors": [
+    "Gautam ANAND <me@gautamanand.in>"
+  ],
+  "license": "UNLICENSED",
+  "keywords": [
+    "Node.js",
+    "Friends",
+    "Social",
+    "Network",
+    "in",
+    "Node",
+    "js"
+  ],
+  "homepage": "https://github.com/serganus/mySocialNetworkAPI",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.2.1",
+    "semantic": "semantic-ui#^2.2.11",
+    "components-font-awesome": "^4.7.0",
+    "jquery-ui": "^1.12.1"
+  }
+}

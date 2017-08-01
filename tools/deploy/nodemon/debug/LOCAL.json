@@ -1,0 +1,9 @@
+{
+    "env": {
+        "NODE_ENV": "LOCAL",
+        "HTTPS": "enabled",
+        "DEBUG_MODE": "true",
+        "DEBUG_MODE_DB": "true",
+        "DB_ENV": "LOCAL"
+    }
+}

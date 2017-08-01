@@ -57,3 +57,7 @@ typings/
 # dotenv environment variables file
 .env
 
+public/fonts
+public/vendor
+package-lock.json
+tools/ssl

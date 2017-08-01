@@ -1,0 +1,1 @@
+This code cannot be used/modified/copies untill explicitly allowed by the author for code evaluation purposes.

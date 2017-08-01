@@ -1,0 +1,19 @@
+{
+    "apps": [{
+        "name": "myCodeSample-debug-LOCAL",
+        "script": "app.js",
+        "watch": false,
+        "instances": "max",
+        "exec_mode": "cluster",
+        "env_LOCAL": {
+            "NODE_ENV": "LOCAL",
+            "HTTPS": "enabled",
+            "DEBUG_MODE": "true",
+            "DEBUG_MODE_DB": "true",
+            "DB_ENV": "LOCAL"
+        },
+        "max_restarts": "20",
+        "autorestart": true,
+        "max_memory_restart": "1000M"
+    }]
+}
