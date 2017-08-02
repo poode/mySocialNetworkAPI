@@ -21,8 +21,6 @@
 |    |
 |    |--connection.js
 |    |
-|    |--friends.js
-|    |
 |    |--updates.js
 |
 |-- /models

@@ -9,6 +9,8 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var updatesModelConfiguration = new Schema({
+	requestor:String,
+	target:String,
 	timeaccessed: {
 		type: Date,
 		default: Date.now

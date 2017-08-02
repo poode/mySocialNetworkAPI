@@ -156,6 +156,8 @@ In case the JSON response will be
 
 ### Task 04: The API will subscribe to updates from an email address
 
+#### POST /updates/subscribe
+
 Please note that "subscribing to updates" is NOT equivalent to "adding a friend connection".
 
 ##### Request
@@ -174,6 +176,23 @@ Please note that "subscribing to updates" is NOT equivalent to "adding a friend 
 ```
 {
   "success": true
+}
+```
+
+##### Error conditions
+- req.body.requestor should exists
+- req.body.requestor should of type string
+- req.body.requestor should be defined
+- req.body.target should exists
+- req.body.target should of type string
+- req.body.target should be defined
+
+In case the JSON response will be 
+
+```
+{
+  "err": true,
+  "message": ""
 }
 ```
 
