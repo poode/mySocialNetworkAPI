@@ -25,13 +25,6 @@ Use any HTTP Client like POSTMAN and pass the following as POST request in body/
       "eddy@example.com"
     ]
 }
-
-{
-  "friends": [
-      "john@example.com",
-      "eddy@example.com"
-    ]
-}
 */
 
 exports.POST = function(req, res) {

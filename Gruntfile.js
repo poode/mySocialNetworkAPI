@@ -100,7 +100,7 @@ module.exports = function(grunt) {
         jshint: {
             client: {
                 options: {
-                    jshintrc: 'configuration/jslint/.jshintrc-client',
+                    jshintrc: 'tools/jslint/.jshintrc-client',
                     ignores: [
                         'public/vendor/*.min.js'
                     ],
@@ -112,7 +112,7 @@ module.exports = function(grunt) {
             },
             server: {
                 options: {
-                    jshintrc: 'configuration/jslint/.jshintrc-server',
+                    jshintrc: 'tools/jslint/.jshintrc-server',
                     reporter: 'node_modules/jshint-stylish'
                 },
                 src: [

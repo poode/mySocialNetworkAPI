@@ -73,21 +73,56 @@ Use any HTTP Client like POSTMAN and pass the following as POST request in body/
     ]
 }
 */
-exports.POST_common = function() {
+exports.POST_common = function(req,res) {
+	/*
+	Error cases:
+	- req.body.friends should exists
+    - req.body.friends cannot have more than two entries
+	- req.body.friends[0] should not be empty & should be a string
+	- req.body.friends[1] should not be empty & should be a string
+	*/
+	if (req.body.friends && req.body.friends[0] !== undefined && req.body.friends[1] !== undefined && typeof(req.body.friends[0]) === 'string' && typeof(req.body.friends[1]) === 'string' && req.body.friends.length === 2) {
+		var AllCommonFriends = [];
+		connectionModel.count({}, function(err, count_connections) {
+			if (count_connections > 0) {
+
+				connectionModel.count({
+					friends: { $eq: req.body.friends[0] && req.body.friends[1] }
+				}, function(err, count_connections_common) {
+					connectionModel.find({
+						friends: { $eq: req.body.friends }
+					},function(err, common) {
+						if (err) {
+							return res.send(err);
+						}
+
+						for (var i = 0; i < common.length; i++) {
+							AllCommonFriends.push(common[i].friends[1]);
+						}
+						res.json({
+							"success": true,
+							"friends" : AllCommonFriends,
+							"count" : count_connections_common
+						})
+					}).lean()
+				});
 
 
-
-/*
-{
-  "success": true,
-  "friends" :
-    [
-      'common@example.com'
-    ],
-  "count" : 1   
-}
-*/
-
+			} else {
+				res.json({
+					error: {
+						value: true,
+						message: 'You have not made any connections, hence cannot retrieve the common friends list between two email addresses.'
+					}
+				});
+			}
+		});
+	}else{
+		res.json({
+			"err": true,
+			"message": "You JSON is invalid"
+		})
+	}
 }
 
 
