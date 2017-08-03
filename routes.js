@@ -9,8 +9,47 @@
  var express = require('express');
  var router = express.Router();
 
+
  router.get('/', function(req,res){
- 	res.redirect('/connection');
+ 	res.json({
+
+ 		"GET":{
+ 			"connection":{
+ 				"URL": req.protocol + '://' + req.hostname + ':' + req.app.get('port') + "/connection",
+ 				"description": "List all connection between two email addresses"
+ 			},
+ 			"update":{
+ 				"URL": req.protocol + '://' + req.hostname + ':' + req.app.get('port') + "/updates",
+ 				"description": "List all subscription/block rules"
+ 			}
+ 		},
+ 		"POST":{
+ 			"connection":{
+ 				"URL": req.protocol + '://' + req.hostname + ':' + req.app.get('port') + "/connection",
+ 				"description": "Create connection between two email addresses. (Task01). Please see JSON SPEC in ./docs/JSONAPI.md"
+ 			},
+ 			"friends":{
+ 				"URL": req.protocol + '://' + req.hostname + ':' + req.app.get('port') + "/friends",
+ 				"description": "Retrieve the friends list for an email address. (Task02). Please see JSON SPEC in ./docs/JSONAPI.md"
+ 			},
+ 			"friends/common":{
+ 				"URL": req.protocol + '://' + req.hostname + ':' + req.app.get('port') + "/friends/common",
+ 				"description": "Retrieve the common friends list between two email addresses. (Task03). Please see JSON SPEC in ./docs/JSONAPI.md"
+ 			},
+ 			"updates/subscribe":{
+ 				"URL": req.protocol + '://' + req.hostname + ':' + req.app.get('port') + "/updates/subscribe",
+ 				"description": "Subscribe to updates from an email address. (Task04). Please see JSON SPEC in ./docs/JSONAPI.md"
+ 			},
+ 			"updates/block":{
+ 				"URL": req.protocol + '://' + req.hostname + ':' + req.app.get('port') + "/updates/block",
+ 				"description": "Block updates from an email address. (Task05). Please see JSON SPEC in ./docs/JSONAPI.md"
+ 			},
+ 			"updates/emails":{
+ 				"URL": req.protocol + '://' + req.hostname + ':' + req.app.get('port') + "/updates/emails",
+ 				"description": "Retrieve all email addresses that can receive updates from an email address. (Task06). Please see JSON SPEC in ./docs/JSONAPI.md"
+ 			}
+ 		}
+ 	})
  });
 
 //Create connection between two email addresses. (Task01)
@@ -33,5 +72,8 @@ router.post('/updates/block',require('./controllers/updates').BLOCK);
 
 //Retrieve all email addresses that can receive updates from an email address. (Task06)
 router.post('/updates/emails',require('./controllers/updates').LIST_ALL);
+
+//List all subscription/block rules (Bonus)
+router.get('/updates',require('./controllers/updates').READ_ALL);
 
 module.exports = router;

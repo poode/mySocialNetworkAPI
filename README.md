@@ -9,7 +9,7 @@ Hey there, I am Gautam ANAND, another Full Stack Engineer that loves Node.js. I 
 
 ## Problem statement for this project
 
-You can check JSON request/response specification in `./docs/JSONAPI.md`.
+You can check JSON request/response/error specification in `./docs/JSONAPI.md`.
 
 - Task 01: As a user, I need an API to create a friend connection between two email addresses.
 - Task 02: As a user, I need an API to retrieve the friends list for an email address.
@@ -24,6 +24,7 @@ I have used Node.js (v6.x.x), MongoDB (v3.4.X) and Express.js (4.X) as technolog
 
 ## Solution the problem statement: JSON APIs
 
+- GET /: List all the API services offered by this server. (Bonus)
 - POST /connection: Create connection between two email addresses. (Task01)
 - GET /connection: List all connection between two email addresses. (Bonus)
 - POST /friends: Retrieve the friends list for an email address. (Task02)

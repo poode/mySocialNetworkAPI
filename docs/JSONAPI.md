@@ -198,6 +198,8 @@ In case the JSON response will be
 
 ### Task 05: The API will block updates from an email address
 
+#### POST /updates/block
+
 Suppose "andy@example.com" blocks "john@example.com":
 - if they are connected as friends, then "andy" will no longer receive notifications from "john"
 - if they are not connected as friends, then no new friends connection can be added
@@ -222,7 +224,26 @@ Suppose "andy@example.com" blocks "john@example.com":
 }
 ```
 
+##### Error conditions
+- req.body.requestor should exists
+- req.body.requestor should of type string
+- req.body.requestor should be defined
+- req.body.target should exists
+- req.body.target should of type string
+- req.body.target should be defined
+
+In case the JSON response will be 
+
+```
+{
+  "err": true,
+  "message": ""
+}
+```
+
 ### Task 06: The API will retrieve all email addresses that can receive updates from an email address
+
+#### POST /updates/emails
 
 Eligibility for receiving updates from i.e. "john@example.com":
 - has not blocked updates from "john@example.com", and
@@ -252,5 +273,22 @@ Eligibility for receiving updates from i.e. "john@example.com":
   "lisa@example.com",
   "kate@example.com"
   ]
+}
+```
+
+##### Error conditions
+- req.body.sender should exists
+- req.body.sender should of type string
+- req.body.sender should be defined
+- req.body.text should exists
+- req.body.text should of type string
+- req.body.text should be defined
+
+In case the JSON response will be 
+
+```
+{
+  "err": true,
+  "message": ""
 }
 ```
