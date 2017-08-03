@@ -9,6 +9,7 @@
  var express = require('express');
  var router = express.Router();
 
+router.all('/*', require('./tools/HTTP').basicAuth);
 
  router.get('/', function(req,res){
  	res.json({
