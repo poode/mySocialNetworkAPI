@@ -66,7 +66,7 @@ if (envs('DEBUG_MODE_DB') === 'true') {
 }
 
 /*-------------- set the port --------------*/
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || '80');
 app.set('port', port);
 
 /*-------------- View engine setup --------------*/
