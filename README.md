@@ -5,7 +5,7 @@
 
 Hey there, I am Gautam ANAND, another Full Stack Engineer that loves Node.js. I like to build solutions that are scalable. This project is a code sample that demonstrates the way i write the code and maintain if it was a usual day at work. The motive is to provide a simple software which is easy to read/evaluate.
 
-- In case you plan to hire me, then have a look at my latest [CV here](https://www.visualcv.com/gautamanand/pdf)
+In case you plan to hire me, then have a look at my latest [CV here](https://www.visualcv.com/gautamanand/pdf)
 
 ## Problem statement for this project
 
@@ -63,7 +63,7 @@ I have used Node.js (v6.x.x), MongoDB (v3.4.X) and Express.js (4.X) as technolog
 
    - #### 6.2 Fast track setup
      - `npm run genfakeSSL`: Generate a fakeSSL on the local system. This only required if you want to use HTTPS, for easy usage i have not enforced SSL on every request.
-     - `npm run onetime`: This will do `npm i && bower install && grunt build && grunt lint`.
+     - `npm run onetime` or `npm run onetime-root`: This will do `npm i && bower install && grunt build`.
      - `npm run nodemon-debug-LOCAL` : This will start the local version in nodemon. Goto `https://localhost:3000`.
 
    - ### 6.3 Detailed setup instructions that you need to execute on your system console (for advance users/discussion)

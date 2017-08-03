@@ -86,7 +86,7 @@
 
 ### POST /updates/emails
 
-- TBA
+![alt text](https://github.com/serganus/mySocialNetworkAPI/raw/master/docs/screenshots/POSTupdatesemails.png)
 
 
 

@@ -3,84 +3,84 @@
  * (c) 2017 Gautam ANAND (me@gautamanand.in)
  * controllers/users.js
  */
-'use strict';
+ 'use strict';
 
-var async = require('async');
-var applicationName = require('../package.json').name;
-var updatesModel = require('../models/updates');
-var connectionModel = require('../models/connection');
+ var async = require('async');
+ var applicationName = require('../package.json').name;
+ var updatesModel = require('../models/updates');
+ var connectionModel = require('../models/connection');
 
-exports.READ_ALL = function(req, res) {
-	var AllUpdates = [];
-	async.parallel([
-			function(callback) {
-				updatesModel.find(function(err, update) {
-					if (err) {
-						return res.send(err);
-					}
+ exports.READ_ALL = function(req, res) {
+ 	var AllUpdates = [];
+ 	async.parallel([
+ 		function(callback) {
+ 			updatesModel.find(function(err, update) {
+ 				if (err) {
+ 					return res.send(err);
+ 				}
 
-					if (req.query.block) {
-						if (req.query.block === 'true') {
-							for (var i = 0; i < update.length; i++) {
-								if (update[i].isBlocked === true) {
-									AllUpdates.push({
-										id: update[i]._id,
-										requestor: update[i].requestor,
-										target: update[i].target,
-										isBlocked: update[i].isBlocked,
-										timeaccessed: update[i].timeaccessed
-									});
-								}
-							}
-						}
-						if (req.query.block === 'false') {
-							for (var i = 0; i < update.length; i++) {
-								if (update[i].isBlocked === false) {
-									AllUpdates.push({
-										id: update[i]._id,
-										requestor: update[i].requestor,
-										target: update[i].target,
-										isBlocked: update[i].isBlocked,
-										timeaccessed: update[i].timeaccessed
-									});
-								}
-							}
-						}
-					} else {
-						for (var i = 0; i < update.length; i++) {
-							AllUpdates.push({
-								id: update[i]._id,
-								requestor: update[i].requestor,
-								target: update[i].target,
-								isBlocked: update[i].isBlocked,
-								timeaccessed: update[i].timeaccessed
-							});
-						}
-					}
+ 				if (req.query.block) {
+ 					if (req.query.block === 'true') {
+ 						for (var i = 0; i < update.length; i++) {
+ 							if (update[i].isBlocked === true) {
+ 								AllUpdates.push({
+ 									id: update[i]._id,
+ 									requestor: update[i].requestor,
+ 									target: update[i].target,
+ 									isBlocked: update[i].isBlocked,
+ 									timeaccessed: update[i].timeaccessed
+ 								});
+ 							}
+ 						}
+ 					}
+ 					if (req.query.block === 'false') {
+ 						for (var i = 0; i < update.length; i++) {
+ 							if (update[i].isBlocked === false) {
+ 								AllUpdates.push({
+ 									id: update[i]._id,
+ 									requestor: update[i].requestor,
+ 									target: update[i].target,
+ 									isBlocked: update[i].isBlocked,
+ 									timeaccessed: update[i].timeaccessed
+ 								});
+ 							}
+ 						}
+ 					}
+ 				} else {
+ 					for (var i = 0; i < update.length; i++) {
+ 						AllUpdates.push({
+ 							id: update[i]._id,
+ 							requestor: update[i].requestor,
+ 							target: update[i].target,
+ 							isBlocked: update[i].isBlocked,
+ 							timeaccessed: update[i].timeaccessed
+ 						});
+ 					}
+ 				}
 
 
-				}).lean().exec(callback);
-			}
-		],
-		function(err, results) {
-			if (err) {
-				return res.send(err);
-			}
+ 			}).lean().exec(callback);
+ 		}
+ 		],
+ 		function(err, results) {
+ 			if (err) {
+ 				return res.send(err);
+ 			}
 
-			updatesModel.count({}, function(err, count_updates) {
-				if (count_updates > 0) {
-					res.json(AllUpdates);
-				} else {
-					res.json({
-						error: {
-							value: true,
-							message: 'You have not made any subscriptions for the friends that are connected.'
-						}
-					});
-				}
-			});
-		});
-}
+ 			updatesModel.count({}, function(err, count_updates) {
+ 				if (count_updates > 0) {
+ 					res.json(AllUpdates);
+ 				} else {
+ 					res.json({
+ 						error: {
+ 							value: true,
+ 							message: 'You have not made any subscriptions for the friends that are connected.'
+ 						}
+ 					});
+ 				}
+ 			});
+ 		});
+ }
 
 /*
 Use any HTTP Client like POSTMAN and pass the following as POST request in body/raw/JSON
@@ -136,7 +136,6 @@ Suppose "andy@example.com" blocks "john@example.com":
 
 */
 exports.BLOCK = function(req, res) {
-	var isConnected = [];
 	/*
 	Error cases:
 	- req.body.requestor should exists
@@ -156,17 +155,17 @@ exports.BLOCK = function(req, res) {
 				return res.send(err);
 			}
 			updatesModel.findOne({
-					requestor: {
-						$eq: req.body.requestor
-					},
-					target: {
-						$eq: req.body.target
-					}
+				requestor: {
+					$eq: req.body.requestor
 				},
-				function(err, isConnected) {
-					if (err) {
-						return res.send(err);
-					}
+				target: {
+					$eq: req.body.target
+				}
+			},
+			function(err, isConnected) {
+				if (err) {
+					return res.send(err);
+				}
 					isConnected.isBlocked = true; //Change the isBlock Status
 					isConnected.save(function(err) {
 						if (err) {
@@ -206,17 +205,46 @@ Eligibility for receiving updates from i.e. "john@example.com":
 - has been @mentioned in the update
 */
 exports.LIST_ALL = function(req, res) {
-
-
 	/*
-	{
-		"success": true
-		"recipients":
-		[
-		"lisa@example.com",
-		"kate@example.com"
-		]
-	}
+	Error cases:
+	- req.body.sender should exists
+	- req.body.sender should of type string
+	- req.body.sender should be defined
+	- req.body.text should exists
+	- req.body.text should of type string
+	- req.body.text should be defined
 	*/
 
+	if (req.body.sender && typeof(req.body.sender) === 'string' && req.body.sender !== undefined && req.body.text && typeof(req.body.text) === 'string' && req.body.text !== undefined) {
+		var canRecievedEmails = [];
+		//Check updates db if target === req.body.sender && isBlocked === false
+		//By default it is subscribed as isBlocked === false
+		updatesModel.find({
+			target: {
+				$eq: req.body.sender
+			},
+			isBlocked: {
+				$eq: false
+			}
+		}, function(err, update) {
+			if (err) {
+				return res.send(err);
+			}
+
+			for (var i = 0; i < update.length; i++) {
+				canRecievedEmails.push(update[i].requestor);
+			}
+
+			res.json({
+				"success": true,
+				"recipients": canRecievedEmails
+			})
+		});
+
+	} else {
+		res.json({
+			"err": true,
+			"message": "You JSON is invalid"
+		})
+	}
 }

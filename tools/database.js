@@ -33,9 +33,9 @@
  exports.DatabaseURIPromise = mongoose.Promise = global.Promise;
  exports.DatabaseURI = mongoose.connect(connectionString4Database, DatabaseURIOptions, function(err) {
  	if (err) {
- 		debugerror(timestamp(timeFormat) + ' ' + colors.green(debugpath) + colors.green('XSHDatabase.connect.err -> ') + colors.green(err));
+ 		debugerror(timestamp(timeFormat) + ' ' + colors.green(debugpath) + colors.green('mysocialnetworkapi.connect.err -> ') + colors.green(err));
  	} else {
- 		debugsuccess(timestamp(timeFormat) + ' ' + colors.red(debugpath) + colors.red('XSHDatabase.connect -> ') + colors.red('Ok'));
+ 		debugsuccess(timestamp(timeFormat) + ' ' + colors.red(debugpath) + colors.red('mysocialnetworkapi.connect -> ') + colors.red('Ok'));
  	}
  });
 
