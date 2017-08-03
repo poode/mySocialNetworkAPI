@@ -51,6 +51,7 @@ var debugerror = require('./tools/debug').debugerror;
 var debugdb = require('./tools/debug').debugdb;
 var debugpath = require('./tools/debug').FindfilePath(__filename);
 
+
 /*-------------- Start the MongoDB connection  --------------*/
 database.DatabaseURIPromise;
 database.DatabaseURI;
@@ -77,6 +78,7 @@ app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 /*-------------- Start the Logger ---------------------------*/
 app.use(require('./tools/log').loggerSystem);
+app.use(require('./tools/debug').debugbyMorgan);
 
 /*-------------- Body Parser --------------*/
 app.use(bodyParser.json());

@@ -1,3 +1,11 @@
+### Debug-console messages
+
+![alt text](https://github.com/serganus/mySocialNetworkAPI/raw/master/docs/screenshots/debug-console.png)
+
+### Logging in MongoDB
+
+![alt text](https://github.com/serganus/mySocialNetworkAPI/raw/master/docs/screenshots/logging_mongodb.png)
+
 ### GET /
 
 ![alt text](https://github.com/serganus/mySocialNetworkAPI/raw/master/docs/screenshots/GET.png)

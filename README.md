@@ -46,7 +46,7 @@ I have used Node.js (v6.x.x), MongoDB (v3.4.X) and Express.js (4.X) as technolog
 
 ## Screenshots
 
-- I have added screenshots, which can be found in `./docs/screenshots/README.md`. Used POSTMAN Client to demo the tasks.
+- I have added screenshots, which can be found in [./docs/screenshots/README.md](https://github.com/serganus/mySocialNetworkAPI/tree/master/docs/screenshots). Used POSTMAN Client to demo the tasks.
 
 
 ## Deployments
@@ -61,9 +61,12 @@ I have used Node.js (v6.x.x), MongoDB (v3.4.X) and Express.js (4.X) as technolog
 	 - Node.js > 6.X.X
 	 - `npm i -g nodemon pm2 bower npm@latest grunt-cli`
 
-   - #### 6.2 Setup instructions that you need to execute on your system console (for advance users/discussion)
+   - #### 6.2 Fast track setup
+     - `npm run genfakeSSL`: Generate a fakeSSL on the local system. This only required if you want to use HTTPS, for easy usage i have not enforced SSL on every request.
+     - `npm run onetime`: This will do `npm i && bower install && grunt build && grunt lint`.
+     - `npm run nodemon-debug-LOCAL` : This will start the local version in nodemon. Goto `https://localhost:3000`.
 
-	 - `npm run genfakeSSL`: Generate a fakeSSL on the local system.
+   - ### 6.3 Detailed setup instructions that you need to execute on your system console (for advance users/discussion)
 	 - `npm i`: Installs the npm modules from `package.json`.
 	 - `bower install`: Installs the bower modules from `bower.json`.
 	 - `grunt build`: Custom build script to minify client side code etc. (It can be expanded to do more in futher improvements)

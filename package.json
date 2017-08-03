@@ -6,6 +6,7 @@
   "private": true,
   "scripts": {
     "genfakeSSL": "./tools/genSSL.sh LocalCA LocalName LocalOrg tools/ssl/LOCAL/",
+    "onetime": "npm i && bower install && grunt build && grunt lint",
     "nodemon-debug-LOCAL": "DEBUG=app-warning,app-iserror,app-success,req-success,req-iserror,req-started,req-isended nodemon --config ./tools/deploy/nodemon/debug/LOCAL.json",
     "pm2-cluster-debug-LOCAL": "DEBUG=app-warning,app-iserror,app-success,req-success,req-iserror,req-started,req-isended pm2 start ./tools/deploy/pm2/debug/LOCAL.json --env LOCAL"
   },
@@ -54,6 +55,7 @@
     "grunt-contrib-cssmin": "^2.2.1",
     "grunt-contrib-jshint": "^1.1.0",
     "grunt-contrib-uglify": "^3.0.1",
-    "grunt-jsvalidate": "^0.2.2"
+    "grunt-jsvalidate": "^0.2.2",
+    "jshint-stylish": "^2.2.1"
   }
 }
