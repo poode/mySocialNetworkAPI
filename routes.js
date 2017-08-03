@@ -18,9 +18,17 @@
  				"URL": req.protocol + '://' + req.hostname + ':' + req.app.get('port') + "/connection",
  				"description": "List all connection between two email addresses"
  			},
- 			"update":{
+ 			"updates":{
  				"URL": req.protocol + '://' + req.hostname + ':' + req.app.get('port') + "/updates",
- 				"description": "List all subscription/block rules"
+ 				"description": "List all users that are wither subscribed/blockec"
+ 			},
+ 			"blocked":{
+ 				"URL": req.protocol + '://' + req.hostname + ':' + req.app.get('port') + "/updates?block=true",
+ 				"description": "List all users that are blocked and wont recieve any notifications"
+ 			},
+ 			"subscribed":{
+ 				"URL": req.protocol + '://' + req.hostname + ':' + req.app.get('port') + "/updates?block=false",
+ 				"description": "List all users that are subscribed and would recieve notifications"
  			}
  		},
  		"POST":{

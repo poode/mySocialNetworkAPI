@@ -9,8 +9,12 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var updatesModelConfiguration = new Schema({
-	requestor:String,
-	target:String,
+	requestor: String,
+	target: String,
+	isBlocked: {
+		type: Boolean,
+		default: false
+	},
 	timeaccessed: {
 		type: Date,
 		default: Date.now
