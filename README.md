@@ -83,4 +83,4 @@ I have used Node.js (v6.x.x), MongoDB (v3.4.X) and Express.js (4.X) as technolog
 
 ## License
 
-- `./docs/LICENSE.md`
+- `LICENSE`
