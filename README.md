@@ -1,6 +1,17 @@
 # mySocialNetworkAPI 
 ## v1.0.0
 
+
+| Dependency | Build |
+|------------|-------|
+|[![Dependency Status][david-image]][david-url]|[![Build Status][travis-image]][travis-url]|
+
+[travis-image]: https://img.shields.io/travis/serganus/mySocialNetworkAPI.svg?style=flat-square
+[travis-url]: https://travis-ci.org/serganus/mySocialNetworkAPI
+[david-image]: http://img.shields.io/david/serganus/mySocialNetworkAPI.svg?style=flat-square
+[david-url]: https://david-dm.org/serganus/mySocialNetworkAPI
+
+
 ## Background
 
 Hey there, I am Gautam ANAND, another Full Stack Engineer that loves Node.js. I like to build solutions that are scalable. This project is a code sample that demonstrates the way i write the code and maintain if it was a usual day at work. The motive is to provide a simple software which is easy to read/evaluate.
