@@ -132,7 +132,7 @@ function onError(error) {
   }
 }
 
-/*-------------- normalizePort() --------------*/
+/*-------------- normalizePort() --------------*///
 function normalizePort(val) {
   var port = parseInt(val, 10);
 
