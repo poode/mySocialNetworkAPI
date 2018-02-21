@@ -36,7 +36,7 @@ if (envs('HTTPS') === 'enabled') {
         var SSLCertValue = ...;
     }
 */
-    /*-------------- SSL PORT and Export Config --------------*/
+    /*-------------- SSL PORT and Export Config --------------*//
     var HTTPSPort = 443;
     var SSL_conf = {
         key: SSLkeyValue,
